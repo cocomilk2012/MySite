@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link type="text/css" href="/static/js/jquery-3.2.1.min.js"/>
+</head>
+<body>
+<form method="post" action="/index/">
+    {% csrf_token %}
+    用户名：<input type="text" id="txt_username" name="txt_username"/>
+    密  码：<input typ="password" id="txt_pwd" name="txt_pwd"/>
+    {{ msg }}
+    <input type="submit" value="登录" />
+</form>
+<h1>用户展示：</h1>
+        <table border="0">
+            <thead>
+                <tr>用户名</tr>
+                <tr>密码</tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item.UserName }}</td>
+                    <td>{{ item.UserPwd }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</body>
+</html>
